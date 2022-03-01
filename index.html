@@ -15,32 +15,52 @@
 
 
 <body>
+     <!----------------------- header start ------------------------->
     <header>
         <h1 class="text-center text-success my-3">MOBILE BAZAR</h1>
     </header>
+    <!------------------------ header end --------------------------->
 
+
+
+
+
+    <!---------------------------------------------- Main start  -------------------------------->
     <main>
+        <!---------------- section for search bar -------------------->
         <section class="container bg-info my-5  text-dark">   
             <div class="w-100 searchbar text-center my-5">
-                 <input id="search-field" class="w-50" type="text"  placeholder="Recipient's username" aria-label="">
+                 <input id="search-field" class="w-50" type="text"  placeholder="Search the phone you want to buy" aria-label="">
                  <button onclick ="searchPhone()" type="button" class="bg-primary text-white"  id="searchButton">Search</button>
             </div>
         </section>
-
+         <!---------------- section for error-handeler -------------------->
+        <section class="container">
+            <div id="error-handeler-1" class="text-danger text-center">
+                <h4>please input a phone name</h4>
+            </div>
+            <div id="error-handeler-2" class="text-danger text-center">
+                <h4>please input a correct phone name</h4>
+            </div>
+        </section>
+        <!---------------- section for details result  -------------------->
         <section class="container  my-5">
             <div id="details-button" class=" h-50 w-50 mx-auto">   
               <div class="card border-0 ">
-   
               </div>
            </div>
         </section>
-
+         <!---------------- section for search results -------------------->
         <section class="container my-5">
               <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4"> 
               </div>
         </section>
-
     </main>
+     <!----------------------------------------- Main end  ------------------------------------->
+
+
+
+
 
 
     <!-- bootstrap-bundle-min-js-link -->

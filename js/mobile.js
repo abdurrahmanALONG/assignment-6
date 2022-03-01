@@ -3,17 +3,22 @@ const searchPhone = () => {
   const searchFild = document.getElementById('search-field');
   const searchText = searchFild.value;
 // --------  clear search result and check searchText--------
-  searchFild.value ='';
-
-
-// ---------------data loding-----------------------
-  const url =`https://openapi.programming-hero.com/api/phones?search=${searchText}`
-  fetch(url)
-  .then(res => res.json())
-  .then(data => displayPhones(data.data));
+searchFild.value ='';
+  if( searchText== '' ){
+    const error1 = document.getElementById('error-handeler-1');
+    error1.style.display = 'block';
+  }
+  else if(searchText!= 'iphone' && searchText!= 'oppo' && searchText!= 'samsung'){
+    const error2 = document.getElementById('error-handeler-2');
+    error2.style.display = 'block';
+  }
+  else{
+    const url =`https://openapi.programming-hero.com/api/phones?search=${searchText}`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayPhones(data.data));
+  }
 }
-
-
 
 // ---------------Search data display--------------------
 const displayPhones = phones => {
@@ -33,7 +38,6 @@ const displayPhones = phones => {
             </div>
         `;
         searchResult.appendChild(div);
-
     })
 }
 // -------------------Search button End----------------------------
@@ -74,6 +78,4 @@ const displayDetails = phoneDetails => {
         `;
         detailsResult.appendChild(div);
 }
-
-
 // -------------------Details button End---------------------------
