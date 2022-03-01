@@ -4,9 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- Bootstrap- link -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <!-- CSS style link -->
+    <link rel="stylesheet" href="style.css">
+    <title>Assignment-6</title>
 </head>
+
+
+
+
 <body>
-    
+    <header>
+        <h1 class="text-center my-3">Assignment - 6</h1>
+    </header>
+
+    <main>
+        <section class="container bg-info  text-dark">   
+            <div class="input-group w-50 searchbar mx-auto my-5">
+                 <input id="search-field" class="w-50" type="text"  placeholder="Recipient's username" aria-label="">
+                 <button onclick="searchPhone()" type="button" id="searchButton">Button</button>
+            </div>
+        </section>
+
+
+        <section class="container mt-4">
+            <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                  <div class="card">
+                    <img src="" class="card-img-top" alt="">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+    </main>
+
+
+    <!-- bootstrap-bundle-min-js-link -->
+    <script src="bootstrap.bundle.min.js"></script>
+    <!-- javascript.js-link -->
+    <script src="js/mobile.js"></script>
 </body>
 </html>
