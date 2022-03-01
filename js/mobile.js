@@ -1,26 +1,27 @@
+// -------------------Search button start----------------------------
 const searchPhone = () => {
   const searchFild = document.getElementById('search-field');
   const searchText = searchFild.value;
+// --------  clear search result and check searchText--------
   searchFild.value ='';
-  console.log(searchText);
-// const url = ` https://openapi.programming-hero.com/api/phones?search=${searchText}`
-// .then(res => res.json())
-// .then(data => console.log(data));
+
+
+// ---------------data loding-----------------------
   const url =`https://openapi.programming-hero.com/api/phones?search=${searchText}`
   fetch(url)
   .then(res => res.json())
   .then(data => displayPhones(data.data));
-
 }
 
+
+
+// ---------------Search data display--------------------
 const displayPhones = phones => {
-    // console.log(phones);
     const searchResult = document.getElementById('search-result');
+    searchResult.innerHTML = '';
     phones.forEach(phone => {
-        // console.log(phone.slug);
         const div = document.createElement('div');
         div.classList.add('col');
-        // const id = `${slug}`;
         div.innerHTML = `
             <div  class="card h-50">
               <img src="${phone.image}" class="card-img-top" alt="">
@@ -35,6 +36,7 @@ const displayPhones = phones => {
 
     })
 }
+// -------------------Search button End----------------------------
 
 
 
@@ -44,19 +46,20 @@ const displayPhones = phones => {
 
 
 
-
-
+// -------------------details button start----------------------------
 const searchDitails = details => {
-    console.log(details);
+    searchDitails.value
+// ---------------------------details button load------------------
     const url =`https://openapi.programming-hero.com/api/phone/${details}`
     fetch(url)
     .then(res => res.json())
     .then(data =>  displayDetails(data.data));
 }
 
+// ---------------Details data display--------------------
 const displayDetails = phoneDetails => {
-    console.log(phoneDetails);
     const detailsResult = document.getElementById('details-button');
+    detailsResult.innerHTML = '';
         const div = document.createElement('div');
         div.classList.add('card');
         div.innerHTML = `
@@ -71,3 +74,6 @@ const displayDetails = phoneDetails => {
         `;
         detailsResult.appendChild(div);
 }
+
+
+// -------------------Details button End---------------------------
