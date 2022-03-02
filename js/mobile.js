@@ -24,7 +24,7 @@ searchFild.value ='';
 const displayPhones = phones => {
     const searchResult = document.getElementById('search-result');
     searchResult.innerHTML = '';
-    phones.forEach(phone => {
+    phones.slice(0,20).forEach(phone => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -34,10 +34,12 @@ const displayPhones = phones => {
                  <h4 class="card-title">${phone.phone_name}</h4>
                  <h5 class="card-title">${phone.brand}</h5>
                </div>
-               <button onclick="searchDitails('${phone.slug}')" class=" w-25 mx-auto">deatils</button>
+               <button onclick="searchDitails('${phone.slug}')" class=" w-25 mx-auto">Details</button>
             </div>
         `;
         searchResult.appendChild(div);
+        // divControl.appendChild(div);
+        
     })
 }
 // -------------------Search button End----------------------------
@@ -62,20 +64,49 @@ const searchDitails = details => {
 
 // ---------------Details data display--------------------
 const displayDetails = phoneDetails => {
+    console.log(phoneDetails);
     const detailsResult = document.getElementById('details-button');
     detailsResult.innerHTML = '';
-        const div = document.createElement('div');
+
+    // loop for sensor
+    const sensorData = phoneDetails.mainFeatures.sensors;
+    const sensors =[];
+    for(const sensor of sensorData){
+     sensors.push(sensor);
+    //  console.log(sensors);
+    }
+// loop for other
+const othersData = phoneDetails.others;
+// console.log(othersData);
+// const objEntries = Object.entries(othersData);
+// console.log(Object.fromEntries(objEntries));
+const values =Object.values(othersData);
+console.log(values);
+const others = [];
+for(const value of values){
+  others.push(value);
+  console.log(others);
+}
+
+       const div = document.createElement('div');
         div.classList.add('card');
         div.innerHTML = `
         <div class="card h-50 mx-auto">
             <img src="${phoneDetails.image}" class="card-img-top" alt="">
             <div class="card-body">
-            <h5 class="card-title">${phoneDetails.brand}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h4 class="card-title">${phoneDetails.brand}</h4>
+            <h5 class="card-title">${phoneDetails.name}</h5>
+            <h5 class="card-title">${phoneDetails.releaseDate? phoneDetails.releaseDate:'No release Date found'}</h5>
+            <p class="card-text">Features: ${phoneDetails.mainFeatures.chipSet} , ${phoneDetails.mainFeatures.displaySize} , ${phoneDetails.mainFeatures.memory} .</p>
+            <p class="card-text">Sensor: ${sensors} .</p>
+            <p class="card-text">Others: ${others} .</p>
+            <a href="#" class="btn btn-primary">More Details</a>
        </div>
      </div>
         `;
         detailsResult.appendChild(div);
+
 }
+
+
 // -------------------Details button End---------------------------
