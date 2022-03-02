@@ -1,4 +1,14 @@
+/* header style */
+#header{
+    background-color: khaki;
+    height: 100px;
+}
+
 /* -------style for search bar----------- */
+.bgcolor{
+    height: 100px;
+    background-color: khaki;
+}
 .searchbar{
     border: 5px;
     border-color: 2px solid aqua;
@@ -6,7 +16,7 @@
 }
 
 
-/* ------------Error handler style---------- */
+/* ------------Error handelar style---------- */
 #error-handeler-1{
     display:  none;
 }

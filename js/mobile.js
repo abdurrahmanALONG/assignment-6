@@ -8,11 +8,12 @@ searchFild.value ='';
     const error1 = document.getElementById('error-handeler-1');
     error1.style.display = 'block';
   }
-  else if(searchText!= 'iphone' && searchText!= 'oppo' && searchText!= 'samsung'){
+  else if(searchText!= 'huawei' && searchText!= 'oppo' && searchText!= 'samsung' && searchText!= 'iphone'){
     const error2 = document.getElementById('error-handeler-2');
     error2.style.display = 'block';
   }
   else{
+    // ---------------------------search result load from API------------------
     const url =`https://openapi.programming-hero.com/api/phones?search=${searchText}`
     fetch(url)
     .then(res => res.json())
@@ -20,7 +21,7 @@ searchFild.value ='';
   }
 }
 
-// ---------------Search data display--------------------
+// ---------------Search data display oparetion--------------------
 const displayPhones = phones => {
     const searchResult = document.getElementById('search-result');
     searchResult.innerHTML = '';
@@ -34,12 +35,10 @@ const displayPhones = phones => {
                  <h4 class="card-title">${phone.phone_name}</h4>
                  <h5 class="card-title">${phone.brand}</h5>
                </div>
-               <button onclick="searchDitails('${phone.slug}')" class=" w-25 mx-auto">Details</button>
+               <button onclick="searchDitails('${phone.slug}')" class="bg-primary text-white w-25 mx-auto">Details</button>
             </div>
         `;
-        searchResult.appendChild(div);
-        // divControl.appendChild(div);
-        
+        searchResult.appendChild(div);   
     })
 }
 // -------------------Search button End----------------------------
@@ -55,39 +54,31 @@ const displayPhones = phones => {
 // -------------------details button start----------------------------
 const searchDitails = details => {
     searchDitails.value
-// ---------------------------details button load------------------
+// ---------------------------details button load from API------------------
     const url =`https://openapi.programming-hero.com/api/phone/${details}`
     fetch(url)
     .then(res => res.json())
     .then(data =>  displayDetails(data.data));
 }
-
 // ---------------Details data display--------------------
 const displayDetails = phoneDetails => {
     console.log(phoneDetails);
     const detailsResult = document.getElementById('details-button');
     detailsResult.innerHTML = '';
-
     // loop for sensor
     const sensorData = phoneDetails.mainFeatures.sensors;
     const sensors =[];
     for(const sensor of sensorData){
      sensors.push(sensor);
-    //  console.log(sensors);
     }
-// loop for other
-const othersData = phoneDetails.others;
-// console.log(othersData);
-// const objEntries = Object.entries(othersData);
-// console.log(Object.fromEntries(objEntries));
-const values =Object.values(othersData);
+// loop for others
+const values = phoneDetails.others;
 console.log(values);
 const others = [];
-for(const value of values){
-  others.push(value);
-  console.log(others);
+for (const [key, value] of Object.entries(values)) {
+  others.push(`${key}: ${value}`);
 }
-
+// creat div for Details
        const div = document.createElement('div');
         div.classList.add('card');
         div.innerHTML = `
@@ -97,16 +88,13 @@ for(const value of values){
             <h4 class="card-title">${phoneDetails.brand}</h4>
             <h5 class="card-title">${phoneDetails.name}</h5>
             <h5 class="card-title">${phoneDetails.releaseDate? phoneDetails.releaseDate:'No release Date found'}</h5>
-            <p class="card-text">Features: ${phoneDetails.mainFeatures.chipSet} , ${phoneDetails.mainFeatures.displaySize} , ${phoneDetails.mainFeatures.memory} .</p>
-            <p class="card-text">Sensor: ${sensors} .</p>
-            <p class="card-text">Others: ${others} .</p>
+            <p class="card-text"><span class="fw-bold">Features:</span> ${phoneDetails.mainFeatures.chipSet} , ${phoneDetails.mainFeatures.displaySize} , ${phoneDetails.mainFeatures.memory} .</p>
+            <p class="card-text"><span class="fw-bold">Sensor:</span> ${sensors} .</p>
+            <p class="card-text"><span class="fw-bold">Others:</span> ${others} .</p>
             <a href="#" class="btn btn-primary">More Details</a>
        </div>
      </div>
         `;
         detailsResult.appendChild(div);
-
 }
-
-
 // -------------------Details button End---------------------------

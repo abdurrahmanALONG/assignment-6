@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap- link -->
+    <!--------------------- Bootstrap-link -------------------->
     <link rel="stylesheet" href="bootstrap.min.css">
-    <!-- CSS style link -->
+    <!------------------------ CSS style link -------------------->
     <link rel="stylesheet" href="style.css">
     <title>Assignment-6</title>
 </head>
@@ -16,21 +16,18 @@
 
 <body>
      <!----------------------- header start ------------------------->
-    <header>
-        <h1 class="text-center text-success my-3">MOBILE BAZAR</h1>
+    <header id="header">
+        <h1 class="text-center text-success mt-0">MOBILE BAZAR</h1>
     </header>
     <!------------------------ header end --------------------------->
-
-
-
 
 
     <!---------------------------------------------- Main start  -------------------------------->
     <main>
         <!---------------- section for search bar -------------------->
-        <section class="container bg-info my-5  text-dark">   
-            <div class="w-100 searchbar text-center my-5">
-                 <input id="search-field" class="w-50" type="text"  placeholder="Search the phone you want to buy" aria-label="">
+        <section class=" bgcolor   text-dark">   
+            <div class="w-100 searchbar text-center  ">
+                 <input id="search-field" class="w-50 my-4" type="text"  placeholder="Search the phone you want to buy" aria-label="">
                  <button onclick ="searchPhone()" type="button" class="bg-primary text-white"  id="searchButton">Search</button>
             </div>
         </section>
@@ -42,7 +39,6 @@
             <div id="error-handeler-2" class="text-danger text-center">
                 <h4>please input a correct phone name</h4>
             </div>
-          
         </section>
         <!---------------- section for details result -------------------->
         <section class="container  my-5">
