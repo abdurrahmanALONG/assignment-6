@@ -62,7 +62,6 @@ const searchDitails = details => {
 }
 // ---------------Details data display--------------------
 const displayDetails = phoneDetails => {
-    console.log(phoneDetails);
     const detailsResult = document.getElementById('details-button');
     detailsResult.innerHTML = '';
     // loop for sensor
@@ -73,7 +72,6 @@ const displayDetails = phoneDetails => {
     }
 // loop for others
 const values = phoneDetails.others;
-console.log(values);
 const others = [];
 for (const [key, value] of Object.entries(values)) {
   others.push(`${key}: ${value}`);
